@@ -18,7 +18,7 @@ const translations = {
         servicesTitle: "Services",
         clientsTitle: "Clients",
         teamTitle: "iHRS Team",
-        footerText: "© 2024 IHRS. All rights reserved.",
+        footerText: "© 2025 IHRS. All rights reserved. <span class='dev-credit'>| Developed by Fahmy Mohsen</span>",
         langSwitchTo: "AR",
         aboutIntro: "iHRS is a professional HR services provider with a dedicated team of experts delivering tailored solutions to meet clients’ business needs. We specialize in HR Outsourcing, Payroll Administration, HR Consultations, Recruitment, and Management Development, always striving to grow with our clients as true partners in success.",
         aboutVisionTitle: "Vision",
@@ -54,7 +54,7 @@ const translations = {
         servicesTitle: "خدماتنا",
         clientsTitle: "عملاؤنا",
         teamTitle: "فريق iHRS",
-        footerText: "© 2024 IHRS. جميع الحقوق محفوظة.",
+        footerText: "© 2025 IHRS. جميع الحقوق محفوظة. <span class='dev-credit'>| تطوير فهمي محسن</span>",
         langSwitchTo: "EN",
         aboutIntro: "iHRS هي شركة متخصصة في تقديم خدمات الموارد البشرية مع فريق متخصص من الخبراء الذين يقدمون حلولاً مصممة خصيصًا لتلبية احتياجات أعمال العملاء. نحن متخصصون في الاستعانة بمصادر خارجية للموارد البشرية، وإدارة الرواتب، واستشارات الموارد البشرية، والتوظيف، وتطوير الإدارة، ونسعى دائمًا للنمو مع عملائنا كشركاء حقيقيين في النجاح.",
         aboutVisionTitle: "الرؤية",
@@ -250,7 +250,12 @@ function updateTextContent() {
     translatableElements.forEach(el => {
         const key = el.getAttribute('data-lang-key');
         if (key && langPack[key]) {
-            el.textContent = langPack[key];
+            // Special case for footer to allow HTML for the dev credit span
+            if (key === 'footerText') {
+                el.innerHTML = langPack[key];
+            } else {
+                el.textContent = langPack[key];
+            }
         }
     });
     document.title = langPack.pageTitle;

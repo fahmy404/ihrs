@@ -552,6 +552,19 @@ footer {
     padding: 2rem 0;
 }
 
+.dev-credit {
+    opacity: 0.8;
+    font-size: 0.9em;
+}
+
+body:not(.lang-ar) .dev-credit {
+    margin-left: 0.5rem;
+}
+
+body.lang-ar .dev-credit {
+    margin-right: 0.5rem;
+}
+
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
     .logo img {
