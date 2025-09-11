@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-lang-key="pageTitle">IHRS HR Solutions</title>
+    
+    <!-- Preconnect to critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://i.ibb.co">
+    
     <!-- Preload the LCP image for the hero slider to improve loading speed -->
     <link rel="preload" as="image" href="https://i.ibb.co/BKNZ4Pty/Human-Resource-Outsourcing.png">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    
+    <!-- Asynchronously load Google Fonts to avoid render-blocking -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&display=swap" media="print" onload="this.media='all'">
+    
+    <!-- Asynchronously load the main stylesheet -->
+    <link rel="stylesheet" href="index.css" media="print" onload="this.media='all'">
+    
+    <!-- Fallback for users with JavaScript disabled -->
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&display=swap">
+        <link rel="stylesheet" href="index.css">
+    </noscript>
 <link rel="stylesheet" href="/index.css">
 </head>
 <body>
@@ -44,7 +57,13 @@
     <main>
         <section id="home" class="hero-slider">
             <div class="slider-container">
-                <!-- Slides will be injected here by JavaScript -->
+                <!-- Statically render the first slide for faster LCP -->
+                <div class="slide active" style="background-image: url('https://i.ibb.co/BKNZ4Pty/Human-Resource-Outsourcing.png');">
+                    <div class="slide-content">
+                        <h2>Human Resource Outsourcing</h2>
+                    </div>
+                </div>
+                <!-- Other slides will be injected by JavaScript -->
             </div>
             <button class="slider-btn prev-btn" aria-label="Previous Slide">&#10094;</button>
             <button class="slider-btn next-btn" aria-label="Next Slide">&#10095;</button>
@@ -160,6 +179,26 @@
 
     <footer>
         <div class="container">
+            <div class="social-links">
+                <h3 data-lang-key="followUs">Follow Us:</h3>
+                <ul>
+                    <li>
+                        <a href="https://www.linkedin.com/company/ihrs-integrated-hr-services/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="linkedin-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/ihrseg" target="_blank" rel="noopener noreferrer" aria-label="Facebook" id="facebook-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v2.385z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@ihrs11" target="_blank" rel="noopener noreferrer" aria-label="TikTok" id="tiktok-link">
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" role="img"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <p data-lang-key="footerText">&copy; 2025 IHRS. All rights reserved. <span class='dev-credit'>| Developed by Fahmy Mohsen</span></p>
         </div>
     </footer>

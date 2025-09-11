@@ -41,6 +41,10 @@ const translations = {
         contactRecruitment: "Recruitment Team / CVs:",
         contactAddressTitle: "Address:",
         contactAddressText: "23 Fareek Awal Ali Amer, Al Mintaqah as Sādisah, Nasr City, Cairo Governorate 4450323",
+        followUs: "Follow Us:",
+        socialLinkedIn: "Follow us on LinkedIn",
+        socialFacebook: "Follow us on Facebook",
+        socialTiktok: "Follow us on TikTok",
     },
     ar: {
         pageTitle: "IHRS | حلول الموارد البشرية",
@@ -77,6 +81,10 @@ const translations = {
         contactRecruitment: "فريق التوظيف / السير الذاتية:",
         contactAddressTitle: "العنوان:",
         contactAddressText: "23 فريق أول علي عامر، المنطقة السادسة، مدينة نصر، محافظة القاهرة 4450323",
+        followUs: "تابعنا:",
+        socialLinkedIn: "تابعنا على لينكد إن",
+        socialFacebook: "تابعنا على فيسبوك",
+        socialTiktok: "تابعنا على تيك توك",
     }
 };
 
@@ -260,6 +268,11 @@ function updateTextContent() {
     });
     document.title = langPack.pageTitle;
     langSwitcherBtn.textContent = langPack.langSwitchTo;
+
+    // Update aria-labels for social media links
+    document.getElementById('linkedin-link')?.setAttribute('aria-label', langPack.socialLinkedIn);
+    document.getElementById('facebook-link')?.setAttribute('aria-label', langPack.socialFacebook);
+    document.getElementById('tiktok-link')?.setAttribute('aria-label', langPack.socialTiktok);
 }
 
 /**
@@ -417,15 +430,16 @@ function smoothScrollTo(targetId) {
  * Updates the 'active' class on navigation links based on scroll position.
  */
 function updateActiveLink() {
-    if (!header || !sections.length) return;
-    const headerHeight = header.offsetHeight;
+    if (!sections.length) return;
     let currentSectionId = '';
 
     sections.forEach(section => {
-        // A section is considered active if its top is above the fold (within a buffer zone)
-        // FIX: Cast section to HTMLElement as Element does not have an offsetTop property.
-        const sectionTop = (section as HTMLElement).offsetTop - headerHeight - 20; 
-        if (window.scrollY >= sectionTop) {
+        // A section becomes a candidate for 'active' when its top edge
+        // passes the vertical midpoint of the viewport. This creates a more
+        // generous threshold and prevents "jumping" on fast scrolls.
+        const sectionActivationPoint = (section as HTMLElement).offsetTop - (window.innerHeight / 2);
+        
+        if (window.scrollY >= sectionActivationPoint) {
             currentSectionId = section.getAttribute('id');
         }
     });
