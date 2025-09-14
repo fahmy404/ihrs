@@ -3,6 +3,7 @@
     --primary-color: #0a4a8f; /* A deep, modern blue */
     --secondary-color: #007bff; /* A brighter blue for accents */
     --accent-color: #f36c21; /* Bright orange for highlights */
+    --logo-teal-color: #49c5b6; /* Teal color from the company logo */
     --light-bg: #f8f9fa;
     --white-color: #ffffff;
     --dark-text: #343a40;
@@ -263,8 +264,14 @@ header .container {
     padding: 4rem 0;
 }
 
-.page-section > .container > h2:first-child {
+#services,
+#clients,
+#team,
+#contact {
     text-align: center;
+}
+
+.page-section > .container > h2:first-child {
     margin-bottom: 2rem;
     font-size: 2.5rem;
     color: var(--primary-color);
@@ -380,7 +387,6 @@ body.lang-ar .about-point::before {
 }
 
 .services h2 {
-    text-align: center;
     margin-bottom: 2rem;
     font-size: 2.5rem;
     color: var(--primary-color);
@@ -398,6 +404,11 @@ body.lang-ar .about-point::before {
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+body.lang-ar .service-card {
+    text-align: right;
 }
 
 .service-card:hover {
@@ -423,20 +434,37 @@ body.lang-ar .about-point::before {
 }
 
 .service-card ul {
-    list-style-type: disc;
-    padding-left: 20px;
+    list-style-type: none;
+    padding: 0;
     margin: 0;
-}
-
-body.lang-ar .service-card ul {
-    padding-left: 0;
-    padding-right: 20px;
 }
 
 .service-card li {
     margin-bottom: 0.5rem;
     color: var(--light-text);
     line-height: 1.7;
+    position: relative;
+    padding-left: 25px;
+}
+
+.service-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-color);
+}
+
+body.lang-ar .service-card li {
+    padding-left: 0;
+    padding-right: 25px;
+}
+
+body.lang-ar .service-card li::before {
+    left: auto;
+    right: 0;
 }
 
 /* --- Clients Section --- */
@@ -530,6 +558,24 @@ body.lang-ar .service-card ul {
     max-width: none; /* Override generic p styles */
     margin: 0 auto;
 }
+
+/* --- Special Title Styles (iHRS Logo) --- */
+.logo-i {
+    position: relative;
+}
+
+.logo-i::after {
+    content: '';
+    position: absolute;
+    width: 0.2em;
+    height: 0.2em;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    top: 0.22em;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 
 /* --- Contact Section --- */
 .contact-wrapper {

@@ -17,7 +17,7 @@ const translations = {
         navApplyJobs: "Apply Jobs",
         servicesTitle: "Services",
         clientsTitle: "Clients",
-        teamTitle: "iHRS Team",
+        teamTitle: "<span class='logo-i'>i</span>HRS Team",
         footerText: "© 2025 IHRS. All rights reserved. <span class='dev-credit'>| Developed by Fahmy Mohsen</span>",
         langSwitchTo: "AR",
         aboutWhoWeAreTitle: "Who We Are?",
@@ -51,7 +51,7 @@ const translations = {
         navApplyJobs: "التقديم للوظائف",
         servicesTitle: "خدماتنا",
         clientsTitle: "عملاؤنا",
-        teamTitle: "فريق iHRS",
+        teamTitle: "فريق <span class='logo-i'>i</span>HRS",
         footerText: "© 2025 IHRS. جميع الحقوق محفوظة. <span class='dev-credit'>| تطوير فهمي محسن</span>",
         langSwitchTo: "EN",
         aboutWhoWeAreTitle: "من نحن؟",
@@ -263,8 +263,8 @@ function updateTextContent() {
     translatableElements.forEach(el => {
         const key = el.getAttribute('data-lang-key');
         if (key && langPack[key]) {
-            // Special case for footer to allow HTML for the dev credit span
-            if (key === 'footerText') {
+            // Allow HTML for specific keys to enable rich text formatting
+            if (key === 'footerText' || key === 'teamTitle') {
                 el.innerHTML = langPack[key];
             } else {
                 el.textContent = langPack[key];
